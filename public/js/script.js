@@ -123,7 +123,7 @@ function runSearch() {
                     }
 
                     // $(".carousel").removeClass("initialized");
-                    $("#test6").carousel();
+                    $("#test6").carousel({indicators:true});
 
                 });
             // }* 500);
