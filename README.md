@@ -11,7 +11,6 @@ Main Page
 		- needs to come in as a link to click which will then query a search
 
 	- has a place for user to create their own recent travel experience
-		- creates a new user
 		- get the information on which city they traveled to
 		- get their comments on the trip
 		- stores to our database
@@ -23,11 +22,8 @@ Main Page
 Once user clicks or searches something...
 	
 	- show the user the following
-		- comment from the author regarding their trip
-		- api results for hotels from hotels.com
-		- api results from trip advisor regarding attractions
-		- api results from priceline on flight costs
-			-need to access googlemaps api to get our location for ticket search
+		- all comments regarding that city
+		- info from our data set regarding traveling to that country
 		- give them option to return to home page
 			- or to just create another search
 
@@ -36,15 +32,13 @@ Once user clicks or searches something...
 Over all things to do... 
 	
 	- get links to following api's
-		- google maps
-		- priceline
-		- hotels.com
-		- trip advisor
+		- google for images 
+		- somewhere to get top5 worldwide
 
 	- get the api's working
 
 	- find and get link to data set for travel hot spots
-		- this will get rendered via server and handlebars
+		- this will get rendered via server
 
 	- create layout and interface
 		- need places for stuff to go
@@ -55,12 +49,18 @@ Over all things to do...
 		- routes
 		- config / models folders initialized by sequelize
 		- schema of dummy data
-		- link our database to handlebars and display data
+		    - need our comments
+		    - need data in data set
+		- link our database 
 
 	- Once we have basic layout and our api's going...
 		- settup click handlers for all buttons
 			- we need one to be able to create posts 
 			- we need to be able to query 
 
+    - need to reference city name to get all comments reference our db
+    - need need country name to reference the dataset
 
 
+    
+we are polar-brushlands in heroku
