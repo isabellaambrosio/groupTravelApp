@@ -4,7 +4,7 @@ function runSearch() {
     $("#test4").empty();
     $("#test5").empty();
     //grab the value from input field
-     $("#test6").empty();
+    $("#test6").empty();
     var city = $("#searchCityInput").val().trim();
     var country = $("#searchCountryInput").val().trim();
     if (city || country != '') { // make sure input isn't empty
@@ -94,35 +94,38 @@ function runSearch() {
 
             var image = city.toLowerCase().trim();
 
-            var queryURL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + image + "&count=6";
+            var queryURL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + image + "&count=2";
 
             // setTimeout(function() {
-                console.log("about to run query");
-                $.ajax({
-                        url: queryURL,
-                        beforeSend: function(xhrObj) {
-                            // Request headers
-                            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "172fbc43cb604a158627109fcedb230c"); //replace value with your own key
-                        },
-                        method: "GET"
-                    })
+            console.log("about to run query");
+            $.ajax({
+                    url: queryURL,
+                    beforeSend: function(xhrObj) {
+                        // Request headers
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "172fbc43cb604a158627109fcedb230c"); //replace value with your own key
+                    },
+                    method: "GET"
+                })
 
-                    .done(function(response) {
-                        console.log("response " + response);
-                        var photoDiv = $("<div class='photo'>");
+                .done(function(response) {
+                    console.log("response " + response);
+                    // var photoDiv = $("<div>");
+                    //  var photoDiv = $("<div class='carousel'>");
 
-                        var results = response.value;
-                        console.log("results " + results);
-                        for (var i = 0; i < results.length; i++) {
-                            var imageResultsDisplay = $('<img src="' + results[i].thumbnailUrl + '"/>');
-                            console.log("IMAGE " + results[i].thumbnailUrl);
-                              $(photoDiv).append(imageResultsDisplay);
-                        }
+                    var results = response.value;
+                    console.log("results " + results);
+                    for (var i = 0; i < results.length; i++) {
+                        // var photoDiv = $("<div class='photo carousel-item'>");
 
-                      
-                        $("#test6").append(photoDiv);
+                        var imageResultsDisplay = $('<img class="carousel-item" src="' + results[i].thumbnailUrl + '"/>');
+                        console.log("IMAGE " + results[i].thumbnailUrl);
+                        $("#test6").append(imageResultsDisplay);
+                    }
 
-                    });
+                    // $(".carousel").removeClass("initialized");
+                    $("#test6").carousel();
+
+                });
             // }* 500);
 
         }
@@ -132,6 +135,12 @@ function runSearch() {
         // Clear the textbox when done
         $("#searchCityInput").val("");
         $("#searchCountryInput").val("");
+
+
+        // once we get all the stuff shoot us to bottom of the page
+        $('html, body').animate({
+            scrollTop: ($('.card-tabs').first().offset().top)
+        }, 500);
     }
 
 
@@ -170,5 +179,5 @@ function clickFunc(tagName) {
     $("#searchCityInput").val(myCity);
     $("#searchCountryInput").val(myCountry);
     runSearch();
-    
+
 }
