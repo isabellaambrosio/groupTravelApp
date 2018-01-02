@@ -21,7 +21,7 @@ var indexToIdMapImage = {
 function allCities() {
     
     cityNames.forEach(function(cityName, i) {
-        $(indexToIdMap[i]).append(cityName + ", " + countryNames[i]);
+        $(indexToIdMap[i]).append(cityName + ", <br>" + countryNames[i]);
 
         var image = cityName.toLowerCase().trim();
 
