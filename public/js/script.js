@@ -13,8 +13,13 @@ function runSearch() {
         $.ajax("/api/comments/" + city, {
             type: "GET",
         }).done(function(response) {
+        
             console.log(response);
             var results = response;
+            // if there are no results
+             if (!results || !results.length) {
+        displayCommentsEmpty(city);
+      }
             // for each result do this...
             for (var i = 0; i < results.length; i++) {
                 console.log(results.length);
@@ -33,10 +38,10 @@ function runSearch() {
                 formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
                 var a = $("<div class='divider'>" + "</div>" +
                     "<div class='section'>" +
-                    "<h2>" + person + "</h2>" +
-                    "<h3>" + " Traveled to " + cityName + ", " + countryName + "</h3>" +
+                    "<h3>" + person + "</h3>" +
+                    "<h4>" + " Traveled to " + cityName + ", " + countryName + "</h4>" +
                     "<p>" + commentBody + "</p>" +
-                    "<small text-align='right'>" + formattedDate + "</small>" +
+                    "<small>" + formattedDate + "</small>" +
                     "</div>"
                 );
 
@@ -51,7 +56,10 @@ function runSearch() {
         $.get("/api/info/" + country, {
             type: "GET",
         }).done(function(response) {
-            console.log(country);
+            // if there are no results
+             if (!response) {
+        displayInfoEmpty(country);
+      }
             // this is the info we get back
             var countryInfo = response;
             var name = countryInfo.list_geopoliticalarea;
@@ -90,44 +98,30 @@ function runSearch() {
         })
         // get images for third field
         function getImages() {
-            // console.log("I'm here");
-
+            // change to lowercase for search
             var image = city.toLowerCase().trim();
-
-            var queryURL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + image + "&count=2";
-
-            // setTimeout(function() {
-            console.log("about to run query");
-            $.ajax({
+            // query for bing
+            var queryURL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + image + "&count=5";
+            $.ajax({ // run the query
                     url: queryURL,
                     beforeSend: function(xhrObj) {
                         // Request headers
-                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "172fbc43cb604a158627109fcedb230c"); //replace value with your own key
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "34424c6faeb84f0c812d8514cbba21b3"); //replace value with your own key
                     },
                     method: "GET"
                 })
 
                 .done(function(response) {
-                    console.log("response " + response);
-                    // var photoDiv = $("<div>");
-                    //  var photoDiv = $("<div class='carousel'>");
-
-                    var results = response.value;
-                    console.log("results " + results);
+                    var results = response.value;// loop thru and append the images to the carousel
                     for (var i = 0; i < results.length; i++) {
-                        // var photoDiv = $("<div class='photo carousel-item'>");
-
-                        var imageResultsDisplay = $('<img class="carousel-item" src="' + results[i].thumbnailUrl + '"/>');
+                        var imageResultsDisplay = $('<img class="carousel-item" src="' + results[i].contentUrl + '"/>');
                         console.log("IMAGE " + results[i].thumbnailUrl);
                         $("#test6").append(imageResultsDisplay);
                     }
-
-                    // $(".carousel").removeClass("initialized");
+    
                     $("#test6").carousel({indicators:true});
 
                 });
-            // }* 500);
-
         }
         // call the function to get the images
         getImages();
@@ -181,3 +175,32 @@ function clickFunc(tagName) {
     runSearch();
 
 }
+
+  // This function displays a messgae when there are no comments
+  function displayCommentsEmpty(city) {
+    var query = window.location.search;
+    var partial = "";
+    if (city) {
+      partial = " for " + city;
+    }
+    $("#test4").empty();
+    var messageh2 = $("<h2>");
+    messageh2.css({ "text-align": "center", "margin-top": "50px" });
+    messageh2.html("No posts yet" + partial + ", click <a href='/form" + query +
+    "'>here</a> to be the first!");
+    $("#test4").append(messageh2);
+  }
+
+ // This function displays a messgae when there is no country data
+  function displayInfoEmpty(country) {
+    var query = window.location.search;
+    var partial = "";
+    if (country) {
+      partial = " for " + country;
+    }
+    $("#test5").empty();
+    var messageh2 = $("<h2>");
+    messageh2.css({ "text-align": "center", "margin-top": "50px" });
+    messageh2.html("Hmmm, there seems to be no information" + partial + ". We apologize for this inconvenience.");
+    $("#test5").append(messageh2);
+  }

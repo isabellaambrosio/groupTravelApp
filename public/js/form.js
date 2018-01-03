@@ -6,7 +6,6 @@ $(document).ready(function() {
   var countryInput = $("#country");
   
   // Adding an event listener for when the form is submitted
- // $("submitButton").on(, handleFormSubmit);
 $("#submitButton").on('click', handleFormSubmit);
   
   // A function for handling what happens when the form to create a new comment 

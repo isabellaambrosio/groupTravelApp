@@ -1,5 +1,4 @@
-
- var cityNames = [];
+var cityNames = [];
 var countryNames = [];
 
 var indexToIdMap = {
@@ -19,7 +18,7 @@ var indexToIdMapImage = {
 }
 
 function allCities() {
-    
+
     cityNames.forEach(function(cityName, i) {
         $(indexToIdMap[i]).append(cityName + ", <br>" + countryNames[i]);
 
@@ -32,7 +31,7 @@ function allCities() {
                     url: queryURL,
                     beforeSend: function(xhrObj) {
                         // Request headers
-                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "172fbc43cb604a158627109fcedb230c"); //replace value with your own key
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "34424c6faeb84f0c812d8514cbba21b3"); //replace value with your own key
                     },
                     method: "GET"
                 })
@@ -45,7 +44,7 @@ function allCities() {
                     console.log("image:::::::::::::: " + results[0].thumbnailUrl);
 
                     var imageResultsDisplay = $('<img src="' + results[0].thumbnailUrl + '"/>');
-                
+
                     $(indexToIdMapImage[i]).append(imageResultsDisplay);
 
 
@@ -56,7 +55,7 @@ function allCities() {
 
 
 window.onload = function() {
- $.ajax("/api/comments/", {
+    $.ajax("/api/comments/", {
         type: "GET",
     }).done(function(response) {
         var results = response;
@@ -67,7 +66,7 @@ window.onload = function() {
         }
         allCities();
     })
-   
+
 
 
 };

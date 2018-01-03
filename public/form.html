@@ -34,21 +34,21 @@
         </nav>
         <!--END OF NAVBAR-->
     </header>
+
     <!----------------------------------------------------------------------------------------------------------------->
 
     <!--SIDENAV-->
     <ul id="slide-out" class="sidenav sidenav-fixed">
         <li>
             <div class="user-view">
-                <div class="background">
-                    <!--<img src="./images/background.png">-->
-                </div>
-                <a href="#!user"><img class="circle" src="./images/travelLogo.png"></a>
+                <a>
+                    <img id="logo" src="./images/LOGOO.png">
+                </a>
+                <!--<a href="#!user"><img class="circle" src="./images/LOGOO.png"></a>-->
             </div>
         </li>
 
     </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
     <!--END OF SIDENAV-->
     <!----------------------------------------------------------------------------------------------------------------->
@@ -64,12 +64,11 @@
                 <div class="col m10 offset-m1">
                     <form id="cms">
                         <!-- Username input form -->
-
+<br>
                         <div class="input-field col m6">
                             <input placeholder="Username" id="person" type="text" class="validate">
                             <label for="person"><b class="submitform">User Name</b></label>
                         </div>
-
 
                         <!--City Destination input form-->
 
@@ -78,10 +77,14 @@
                             <label for="autocomplete-input"><b class="submitform">City Destination</b></label>
                         </div>
                         
+                        <br>
+                        
                          <div class="input-field col m6">
                             <input placeholder="country" type="text" id="country" class="autocomplete">
                             <label for="autocomplete-input"><b class="submitform">Country</b></label>
                         </div>
+                        
+                        <br>
 
 
                         <!-- Review input form -->
@@ -110,13 +113,9 @@
                     </div>
                 </div>
                 
-                
                          </form>
-                        
-                
-                
+                         
                 </div>
-               
                 <!--end of FIRST row-->
 
             </div>
@@ -152,7 +151,6 @@
     
         <script type="text/javascript">
         $(document).ready(function() {
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
 
         });
