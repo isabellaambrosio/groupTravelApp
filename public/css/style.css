@@ -83,7 +83,14 @@ h5 {
     position: relative;
     bottom: 20px;
     left: 25px;
+}
 
+#formButton {
+    padding-left: 30px;
+}
+
+waves-effect waves-light red btn modal-trigger {
+    padding-left: 50px;
 }
 
 input, textarea {
