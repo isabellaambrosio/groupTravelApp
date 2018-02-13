@@ -1,5 +1,7 @@
 # American-Traveler
 
+<img src="public/images/american-traveler.png">
+
 
 ### This application was built using:
 * node.js
@@ -11,16 +13,8 @@
 
 This app allows users to gather information about traveling to a foreign country. Users are also able to post reviews about their experiences traveling abroad.
 
+### App Link
+https://polar-brushlands-90454.herokuapp.com/index
 
-### Installation
-#### To run the application locally, first clone this repository with the following commands
 
-* git clone git@github.com:JoshJancula/groupTravelApp.git
-
-* Next cd into groupTravelApp and run an npm install.
-
-* Finally, run the node server locally by typing 'node server.js'
-
-* Now, open the local application on port 3000 at the URL: http://localhost:3000/.
-
-* Create an account, browse, find new cities, read reviews.
+** Due to a very limited free-trial mode on Bing Images IPA, images might not be available anymore.
