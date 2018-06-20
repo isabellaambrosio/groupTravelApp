@@ -106,7 +106,7 @@ function runSearch() {
                     url: queryURL,
                     beforeSend: function(xhrObj) {
                         // Request headers
-                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "34424c6faeb84f0c812d8514cbba21b3"); //replace value with your own key
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "4897920b59984fd28e81f9c4fa938304"); //replace value with your own key
                     },
                     method: "GET"
                 })

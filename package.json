@@ -1,10 +1,11 @@
 {
   "name": "group-travel-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "<img src=\"public/images/american-traveler.png\">",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,6 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
     "sabre-dev-studio": "^1.2.0",
-    "sequelize": "^4.28.6"
+    "sequelize": "^4.37.10"
   }
 }
